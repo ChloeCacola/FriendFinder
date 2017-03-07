@@ -1,6 +1,6 @@
 //dependencies
 var path = require("path");
-var friendData = require("../data/data");
+var friendData = require("../data/friends");
 
 module.exports = function(app) {
 
@@ -11,10 +11,12 @@ module.exports = function(app) {
 
 	//handle incoming survey results & compatibility logic (post)
 	app.post("/api/friends", function(req, res) {
-		var newfriend = req.body
-		console.log(newfriend);
+		var newfriendTest = req.body
+		console.log(newfriendTest);
 
 		//compare compatibility here:
+		//Math.abs(newfriend minus result)
+		//loop through the new friend to compare numbers
 	});
 }
 
