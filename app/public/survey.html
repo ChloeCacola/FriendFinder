@@ -35,7 +35,7 @@
 				  </div>
 				 <!-- Question 1 -->
 				  <div class="form-group">
-				  <label for="q1">Question 1</label><br>
+				  <label for="q1">You need a lot of space.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q1">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -45,7 +45,7 @@
 				  </select>
 				  <!-- Question 2 -->
 				  <div class="form-group">
-				  <label for="q2">Question 2</label><br>
+				  <label for="q2">You speak often before you think.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q2">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -55,7 +55,7 @@
 				  </select>
 				  <!-- Question 3 -->
 				  <div class="form-group">
-				  <label for="q3">Question 3</label><br>
+				  <label for="q3">You empathize with people.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q3">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -65,7 +65,7 @@
 				  </select>
 				  <!-- Question 4 -->
 				  <div class="form-group">
-				  <label for="q4">Question 2</label><br>
+				  <label for="q4">You like animals.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q4">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -75,7 +75,7 @@
 				  </select>
 				  <!-- Question 5 -->
 				  <div class="form-group">
-				  <label for="q5">Question 2</label><br>
+				  <label for="q5">You are adventurous.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q5">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -85,7 +85,7 @@
 				  </select>
 				  <!-- Question 6 -->
 				  <div class="form-group">
-				  <label for="q6">Question 2</label><br>
+				  <label for="q6">You handle most things seriously.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q6">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -95,7 +95,7 @@
 				  </select>
 				  <!-- Question 7 -->
 				  <div class="form-group">
-				  <label for="q7">Question 2</label><br>
+				  <label for="q7">You are responsible.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q7">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -105,7 +105,7 @@
 				  </select>
 				  <!-- Question 8 -->
 				  <div class="form-group">
-				  <label for="q8">Question 2</label><br>
+				  <label for="q8">You are physically active.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q8">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -115,7 +115,7 @@
 				  </select>
 				  <!-- Question 9 -->
 				  <div class="form-group">
-				  <label for="q9">Question 2</label><br>
+				  <label for="q9">You enjoy superficial things.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q9">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -125,7 +125,7 @@
 				  </select>
 				  <!-- Question 10 -->
 				  <div class="form-group">
-				  <label for="q10">Question 2</label><br>
+				  <label for="q10">You like to philosophize.</label><br>
 				  <select class="selectpicker" data-width="fit" id="q10">
 				    <option value = 1>1(strongly disagree)</option>
 				    <option value = 2>2</option>
@@ -140,7 +140,7 @@
 
 				<!-- Modal -->
 				<div id="match" class="modal fade" role="dialog">
-				  <div class="modal-dialog">
+				  <div class="modal-dialog modal-sm">
 
 				    <!-- Modal content-->
 				    <div class="modal-content">
@@ -149,7 +149,7 @@
 				        <h4 class="modal-title">Here's your match!</h4>
 				      </div>
 				      <div class="modal-body">
-				        <p>Your match:</p>
+				        <p id="matchbody">Your match:</p>
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -161,6 +161,12 @@
 			</div><!-- col 1, user input -->
 		</div><!-- row 1-->
 	</div><!-- container -->
+
+	 <footer class="footer">
+	     <div class="container">
+	        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/ChloeCacola/FriendFinder">GitHub Repo</a></p>
+	     </div>
+    </footer>
 
 <!-- javascript - how to move to file and link using local server? -->
 <script type = "text/javascript">
@@ -200,23 +206,23 @@ $(".submit").on("click", function(event) {
 
 	$.post("/api/friends", newfriend, function(data) {
 		result = JSON.parse(data);
-		$(".modal-body").html(result.name);
+		var $img = $("<img>", {src: result.photo, alt: result.name});
+		$("#matchbody").html(result.name).append("<br>").append($img);
 
 		//clear form
-		// $("#name").val("");
-		// $("#photo").val("");
-		// $("#q1").val(1);
-		// $("#q2").val(1);
-		// $("#q3").val(1);
-		// $("#q4").val(1);
-		// $("#q5").val(1);
-		// $("#q6").val(1);
-		// $("#q7").val(1);
-		// $("#q8").val(1);
-		// $("#q9").val(1);
-		// $("#q10").val(1);
+		$("#name").val("");
+		$("#photo").val("");
+		$("#q1").val(1);
+		$("#q2").val(1);
+		$("#q3").val(1);
+		$("#q4").val(1);
+		$("#q5").val(1);
+		$("#q6").val(1);
+		$("#q7").val(1);
+		$("#q8").val(1);
+		$("#q9").val(1);
+		$("#q10").val(1);
 
-		// alert(result.name + " | " + $("<a href = '" + result.photo + "'>"));
 	});
 
 });
