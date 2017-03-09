@@ -6,6 +6,9 @@
 	
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<!-- jQuery -->
 	 <script src="https://code.jquery.com/jquery.js"></script>
 	<!-- Local css (not working)-->
@@ -50,10 +53,111 @@
 				    <option value = 4>4</option>
 				    <option value = 5>5(strongly agree)</option>
 				  </select>
+				  <!-- Question 3 -->
+				  <div class="form-group">
+				  <label for="q3">Question 3</label><br>
+				  <select class="selectpicker" data-width="fit" id="q3">
+				    <option value = 1>1(strongly disagree)</option>
+				    <option value = 2>2</option>
+				    <option value = 3>3</option>
+				    <option value = 4>4</option>
+				    <option value = 5>5(strongly agree)</option>
+				  </select>
+				  <!-- Question 4 -->
+				  <div class="form-group">
+				  <label for="q4">Question 2</label><br>
+				  <select class="selectpicker" data-width="fit" id="q4">
+				    <option value = 1>1(strongly disagree)</option>
+				    <option value = 2>2</option>
+				    <option value = 3>3</option>
+				    <option value = 4>4</option>
+				    <option value = 5>5(strongly agree)</option>
+				  </select>
+				  <!-- Question 5 -->
+				  <div class="form-group">
+				  <label for="q5">Question 2</label><br>
+				  <select class="selectpicker" data-width="fit" id="q5">
+				    <option value = 1>1(strongly disagree)</option>
+				    <option value = 2>2</option>
+				    <option value = 3>3</option>
+				    <option value = 4>4</option>
+				    <option value = 5>5(strongly agree)</option>
+				  </select>
+				  <!-- Question 6 -->
+				  <div class="form-group">
+				  <label for="q6">Question 2</label><br>
+				  <select class="selectpicker" data-width="fit" id="q6">
+				    <option value = 1>1(strongly disagree)</option>
+				    <option value = 2>2</option>
+				    <option value = 3>3</option>
+				    <option value = 4>4</option>
+				    <option value = 5>5(strongly agree)</option>
+				  </select>
+				  <!-- Question 7 -->
+				  <div class="form-group">
+				  <label for="q7">Question 2</label><br>
+				  <select class="selectpicker" data-width="fit" id="q7">
+				    <option value = 1>1(strongly disagree)</option>
+				    <option value = 2>2</option>
+				    <option value = 3>3</option>
+				    <option value = 4>4</option>
+				    <option value = 5>5(strongly agree)</option>
+				  </select>
+				  <!-- Question 8 -->
+				  <div class="form-group">
+				  <label for="q8">Question 2</label><br>
+				  <select class="selectpicker" data-width="fit" id="q8">
+				    <option value = 1>1(strongly disagree)</option>
+				    <option value = 2>2</option>
+				    <option value = 3>3</option>
+				    <option value = 4>4</option>
+				    <option value = 5>5(strongly agree)</option>
+				  </select>
+				  <!-- Question 9 -->
+				  <div class="form-group">
+				  <label for="q9">Question 2</label><br>
+				  <select class="selectpicker" data-width="fit" id="q9">
+				    <option value = 1>1(strongly disagree)</option>
+				    <option value = 2>2</option>
+				    <option value = 3>3</option>
+				    <option value = 4>4</option>
+				    <option value = 5>5(strongly agree)</option>
+				  </select>
+				  <!-- Question 10 -->
+				  <div class="form-group">
+				  <label for="q10">Question 2</label><br>
+				  <select class="selectpicker" data-width="fit" id="q10">
+				    <option value = 1>1(strongly disagree)</option>
+				    <option value = 2>2</option>
+				    <option value = 3>3</option>
+				    <option value = 4>4</option>
+				    <option value = 5>5(strongly agree)</option>
+				  </select>
 
 				</div>
-				  <button class="submit" class="btn btn-default">Submit</button>
+				  <button class="submit" class="btn btn-default" data-toggle="modal" data-target="#match">Submit</button>
 				</form>
+
+				<!-- Modal -->
+				<div id="match" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">Here's your match!</h4>
+				      </div>
+				      <div class="modal-body">
+				        <p>Your match:</p>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				      </div>
+				    </div>
+
+				  </div>
+				</div><!-- model end -->
 			</div><!-- col 1, user input -->
 		</div><!-- row 1-->
 	</div><!-- container -->
@@ -62,25 +166,62 @@
 <script type = "text/javascript">
 //on button click..
 $(".submit").on("click", function(event) {
-
 	event.preventDefault();
 
-	var newfriendTest = {
+	var q1 = parseInt($("#q1").val().trim());
+	var q2 = parseInt($("#q2").val().trim());
+	var q3 = parseInt($("#q3").val().trim());
+	var q4 = parseInt($("#q4").val().trim());
+	var q5 = parseInt($("#q5").val().trim());
+	var q6 = parseInt($("#q6").val().trim());
+	var q7 = parseInt($("#q7").val().trim());
+	var q8 = parseInt($("#q8").val().trim());
+	var q9 = parseInt($("#q9").val().trim());
+	var q10 = parseInt($("#q10").val().trim());
+
+	newfriend = {
 		name: $("#name").val().trim(),
 		photo: $("#photo").val().trim(),
-		q1: $("#q1").val(),
-		q2: $("#q2").val()
-	}
+		scores:[]
+		}
+	newfriendScore = newfriend.scores
+
+	newfriendScore.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
 
 	console.log("clicked");
-	console.log(newfriendTest);
+	console.log(newfriend);
+
+// 	$.ajax({
+//   type: 'POST',
+//   data: JSON.stringify(newfriend),
+//   contentType: 'application/json',
+//   url: '/api/friends'
+// });
+
+	$.post("/api/friends", newfriend, function(data) {
+		result = JSON.parse(data);
+		$(".modal-body").html(result.name);
+
+		//clear form
+		// $("#name").val("");
+		// $("#photo").val("");
+		// $("#q1").val(1);
+		// $("#q2").val(1);
+		// $("#q3").val(1);
+		// $("#q4").val(1);
+		// $("#q5").val(1);
+		// $("#q6").val(1);
+		// $("#q7").val(1);
+		// $("#q8").val(1);
+		// $("#q9").val(1);
+		// $("#q10").val(1);
+
+		// alert(result.name + " | " + $("<a href = '" + result.photo + "'>"));
+	});
+
 });
 
-	//prevent form from submitting
 
-	//create a variable newFriend with info and score inside
-
-	//log newFriend
 </script>
 
 </body>
