@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 var app = express();
 
 //initial port (change this to heroku?)
-var PORT = 8080;
+var PORT = process.env.PORT || 8080;
 
 //middleware
 app.use(bodyParser.json());
